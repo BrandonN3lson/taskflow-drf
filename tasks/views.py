@@ -1,29 +1,29 @@
 from rest_framework import generics, filters
 from django_filters.rest_framework import DjangoFilterBackend
-from .models import Category
-from .serialisers import CategorySerializer
+from .models import Task
+from .serializers import TaskSerializer
 from rest_framework.permissions import IsAuthenticated
 
 
-class CategoryList(generics.ListCreateAPIView):
+class TaskList(generics.ListCreateAPIView):
 
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
     permission_classes = [IsAuthenticated]
+    serializer_class = TaskSerializer
+    queryset = Task.objects.all()
 
     filter_backends = [
                        DjangoFilterBackend, filters.SearchFilter,
                        filters.OrderingFilter
                        ]
-    search_fields = ['name', 'user__username']
-    ordering_fields = ['created_at']
+    search_fields = ['title', 'category__name']
+    ordering_fields = ['created_at', 'priority']
 
     def perform_create(self, serialiser):
         serialiser.save(user=self.request.user)
 
 
-class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
+class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
 
     permission_classes = [IsAuthenticated]
-    serializer_class = CategorySerializer
-    queryset = Category.objects.all()
+    serializer_class = TaskSerializer
+    queryset = Task.objects.all()
