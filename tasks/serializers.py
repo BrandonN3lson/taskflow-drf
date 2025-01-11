@@ -11,3 +11,12 @@ class TaskSerializer (serializers.ModelSerializer):
             'category', 'status', 'priority',
             'due_date', 'created_at', 'updated_at',
         ]
+
+
+class TaskTitleSerializer (serializers.ModelSerializer):
+
+    class Meta:
+        model = Task
+        fields = [
+            'title',
+        ]
