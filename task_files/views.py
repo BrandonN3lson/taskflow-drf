@@ -19,7 +19,7 @@ class TaskFileList(generics.ListCreateAPIView):
     ordering_fields = ['uploaded_at']
 
 
-class TaskFileDetail(generics.RetrieveUpdateDestroyAPIView):
+class TaskFileDetail(generics.RetrieveDestroyAPIView):
 
     permission_classes = [IsAuthenticated]
     serializer_class = TaskFileSerializer

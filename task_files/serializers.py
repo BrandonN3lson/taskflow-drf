@@ -11,6 +11,3 @@ class TaskFileSerializer (serializers.ModelSerializer):
         fields = [
             'id', 'task', 'task_title', 'file', 'uploaded_at'
         ]
-
-        def get_file_url(self, obj):
-            return obj.file.url

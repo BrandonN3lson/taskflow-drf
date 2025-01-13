@@ -34,7 +34,7 @@ REST_FRAMEWORK = {
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = False 
 
 ALLOWED_HOSTS = [
     '8000-brandonn3ls-taskflowdrf-9a17inewlr1.ws.codeinstitute-ide.net',

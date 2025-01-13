@@ -5,7 +5,7 @@ from categories.models import Category
 status_choices = [
     ("pending", "Pending"),
     ("in_progress", "In Progress"),
-    ("completed", "Completed",),
+    ("completed", "Completed"),
 ]
 
 priority_choices = [
