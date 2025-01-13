@@ -33,6 +33,7 @@ class Task(models.Model):
 
     class Meta:
         ordering = ['-created_at']
+        unique_together = ('user', 'title', 'due_date')
 
     def __str__(self):
         return self.title

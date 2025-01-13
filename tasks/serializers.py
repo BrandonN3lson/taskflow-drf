@@ -26,6 +26,10 @@ class TaskSerializer (serializers.ModelSerializer):
 
     def get_is_overdue(self, obj):
         today = datetime.now().date()
+
+        if obj.status == 'completed':
+            return False
+
         if obj.due_date and obj.due_date.date() < today:
             return True
         return False

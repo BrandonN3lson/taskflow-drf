@@ -39,7 +39,7 @@ class TasksDueSoon(generics.ListAPIView):
         start_of_week = today - timedelta(days=today.weekday())
         end_of_week = start_of_week + timedelta(days=6)
 
-        queryset = Task.object.filter(
+        queryset = Task.objects.filter(
             user=self.request.user,
             due_date__isnull=False
         ).filter(
