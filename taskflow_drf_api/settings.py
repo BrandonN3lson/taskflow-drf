@@ -58,7 +58,7 @@ ALLOWED_HOSTS = [
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-brandonn3ls-taskflowdrf-9a17inewlr1.ws.codeinstitute-ide.net',
-    'https://task-flow-drf-api-6a658d5dbfee.herokuapp.com/',
+    'https://task-flow-drf-api-6a658d5dbfee.herokuapp.com',
 ]
 
 # Application definition
