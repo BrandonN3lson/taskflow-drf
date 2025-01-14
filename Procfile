@@ -1,2 +1,2 @@
 release: python manage.py makemigrations && python manage.py migrate
-web: gunicorn taskflow-drf.wsgi
+web: gunicorn taskflow_drf_api.wsgi
