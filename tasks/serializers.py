@@ -1,3 +1,4 @@
+from django.contrib.humanize.templatetags.humanize import naturaltime
 from rest_framework import serializers
 from datetime import datetime
 from .models import Task
@@ -6,6 +7,8 @@ from .models import Task
 class TaskSerializer (serializers.ModelSerializer):
     is_overdue = serializers.SerializerMethodField()
     days_left = serializers.SerializerMethodField()
+    created_at = serializers.SerializerMethodField()
+    updated_at = serializers.SerializerMethodField()
 
     class Meta:
         model = Task
@@ -15,7 +18,16 @@ class TaskSerializer (serializers.ModelSerializer):
             'due_date', 'days_left', 'is_overdue', 'created_at', 'updated_at',
         ]
 
+    def get_created_at(self, obj):
+        return naturaltime(obj.created_at)
+
+    def get_updated_at(self, obj):
+        return naturaltime(obj.updated_at)
+
     def get_days_left(self, obj):
+        if obj.status == 'completed':
+            return None
+
         today = datetime.now().date()
         due_date = obj.due_date
         if due_date is not None:
