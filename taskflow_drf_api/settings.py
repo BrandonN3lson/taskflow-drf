@@ -53,12 +53,12 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     '8000-brandonn3ls-taskflowdrf-9a17inewlr1.ws.codeinstitute-ide.net',
-    'localhost', 'task-flow-drf-api.herokuapp.com',
+    'https://task-flow-drf-api-6a658d5dbfee.herokuapp.com',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:8000',
-    'https://8000-brandonn3ls-taskflowdrf-9a17inewlr1.ws.codeinstitute-ide.net'
+    'https://8000-brandonn3ls-taskflowdrf-9a17inewlr1.ws.codeinstitute-ide.net',
+    'https://task-flow-drf-api-6a658d5dbfee.herokuapp.com/',
 ]
 
 # Application definition
