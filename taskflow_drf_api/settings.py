@@ -117,6 +117,10 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
 
 CORS_ALLOW_CREDENTIALS = True
 
+# allauth/dj-rest-auth settings
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_EMAIL_REQUIRED = False
+
 ROOT_URLCONF = 'taskflow_drf_api.urls'
 
 TEMPLATES = [
