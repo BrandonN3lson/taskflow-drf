@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from .views import root_route, logout_route
+from .views import UserList
 
 urlpatterns = [
     path("", root_route),
@@ -11,6 +12,7 @@ urlpatterns = [
     path("dj-rest-auth/registration/",
          include("dj_rest_auth.registration.urls")
          ),
+    path('users/', UserList.as_view()),
     path("", include("categories.urls")),
     path("", include("tasks.urls")),
     path("", include("task_files.urls")),

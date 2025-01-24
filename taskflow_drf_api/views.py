@@ -1,10 +1,19 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from .serializers import UserSerializer
+from django.contrib.auth.models import User
+
+
 from .settings import (
     JWT_AUTH_COOKIE, JWT_AUTH_REFRESH_COOKIE, JWT_AUTH_SAMESITE,
     JWT_AUTH_SECURE,
 )
+from rest_framework import generics
 
+
+class UserList(generics.ListAPIView):
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
 
 @api_view()
 def root_route(request):
