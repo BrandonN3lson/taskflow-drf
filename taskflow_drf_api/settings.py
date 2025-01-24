@@ -66,6 +66,17 @@ ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
 ]
 
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CLIENT_ORIGIN')
+    ]
+
+if 'CLIENT_ORIGIN_DEV' in os.environ:
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        r"^https:\/\/.*\.codeinstitute-ide\.net$",
+    ]
+
+
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-brandonn3ls-taskflowdrf-9a17inewlr1.ws.codeinstitute-ide.net',
     'https://task-flow-drf-api-6a658d5dbfee.herokuapp.com',
@@ -75,7 +86,11 @@ CSRF_TRUSTED_ORIGINS = [
 CORS_ALLOWED_ORIGINS = [
     'https://8000-brandonn3ls-taskflowdrf-9a17inewlr1.ws.codeinstitute-ide.net',
     'https://task-flow-drf-api-6a658d5dbfee.herokuapp.com',
+    'https://3000-brandonn3lson-taskflow-drtekwb9ez2.ws.codeinstitute-ide.net',
 ]
+
+CORS_ALLOW_CREDENTIALS = True
+
 
 # Application definition
 
@@ -116,17 +131,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
 ]
-if 'CLIENT_ORIGIN' in os.environ:
-    CORS_ALLOWED_ORIGINS = [
-        os.environ.get('CLIENT_ORIGIN')
-    ]
 
-if 'CLIENT_ORIGIN_DEV' in os.environ:
-    CORS_ALLOWED_ORIGIN_REGEXES = [
-         r"^https:\/\/.*\.codeinstitute-ide\.net$",
-    ]
-
-CORS_ALLOW_CREDENTIALS = True
 
 # allauth/dj-rest-auth settings
 ACCOUNT_USERNAME_REQUIRED = True
