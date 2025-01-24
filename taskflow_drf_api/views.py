@@ -15,6 +15,7 @@ class UserList(generics.ListAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
 
+
 @api_view()
 def root_route(request):
     """
