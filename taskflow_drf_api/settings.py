@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 import re
+from datetime import timedelta
 import dj_database_url
 if os.path.exists('env.py'):
     import env # noqa
@@ -41,6 +42,7 @@ if 'DEV' not in os.environ:
         'rest_framework.renderers.JSONRenderer',
     ]
 
+
 REST_USE_JWT = True
 JWT_AUTH_SECURE = True
 JWT_AUTH_COOKIE = 'my-app-auth'
@@ -48,9 +50,14 @@ JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
 JWT_AUTH_SAMESITE = 'None'
 
 REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'taskflow_drf_api.serializers.UserSerializer'
+    'USER_DETAILS_SERIALIZER': 'taskflow_drf_api.serializers.UserSerializer',
 }
 
+
+# allauth/dj-rest-auth settings
+ACCOUNT_AUTHENTICATION_METHOD = "username"
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_EMAIL_REQUIRED = False
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -83,11 +90,6 @@ CSRF_TRUSTED_ORIGINS = [
     'https://3000-brandonn3lson-taskflow-drtekwb9ez2.ws.codeinstitute-ide.net',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    'https://8000-brandonn3ls-taskflowdrf-9a17inewlr1.ws.codeinstitute-ide.net',
-    'https://task-flow-drf-api-6a658d5dbfee.herokuapp.com',
-    'https://3000-brandonn3lson-taskflow-drtekwb9ez2.ws.codeinstitute-ide.net',
-]
 
 CORS_ALLOW_CREDENTIALS = True
 
@@ -103,8 +105,8 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
-    'rest_framework',
     'django_filters',
+    'rest_framework',
     'rest_framework.authtoken',
     'dj_rest_auth',
     'django.contrib.sites',
@@ -129,13 +131,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware',
 ]
 
 
-# allauth/dj-rest-auth settings
-ACCOUNT_USERNAME_REQUIRED = True
-ACCOUNT_EMAIL_REQUIRED = False
 
 ROOT_URLCONF = 'taskflow_drf_api.urls'
 
