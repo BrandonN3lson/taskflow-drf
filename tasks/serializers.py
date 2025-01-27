@@ -5,7 +5,7 @@ from .models import Task
 
 
 class TaskSerializer (serializers.ModelSerializer):
-    user = serializers.ReadOnlyField()
+    owner = serializers.ReadOnlyField(source='user.username')
     is_overdue = serializers.SerializerMethodField()
     days_left = serializers.SerializerMethodField()
     created_at = serializers.SerializerMethodField()
@@ -15,7 +15,7 @@ class TaskSerializer (serializers.ModelSerializer):
     class Meta:
         model = Task
         fields = [
-            'id', 'user', 'title', 'description',
+            'id', 'owner', 'title', 'description',
             'category', 'status', 'priority',
             'due_date', 'days_left', 'is_overdue', 'created_at', 'updated_at',
         ]
