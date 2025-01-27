@@ -5,6 +5,7 @@ from .models import Task
 
 
 class TaskSerializer (serializers.ModelSerializer):
+    user = serializers.ReadOnlyField()
     is_overdue = serializers.SerializerMethodField()
     days_left = serializers.SerializerMethodField()
     created_at = serializers.SerializerMethodField()
