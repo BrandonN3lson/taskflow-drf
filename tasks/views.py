@@ -19,8 +19,8 @@ class TaskList(generics.ListCreateAPIView):
     search_fields = ['title', 'category__name']
     ordering_fields = ['created_at', 'priority']
 
-    def perform_create(self, serialiser):
-        serialiser.save(user=self.request.user)
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 class TaskDetail(generics.RetrieveUpdateDestroyAPIView):

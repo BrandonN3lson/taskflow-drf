@@ -9,6 +9,7 @@ class TaskSerializer (serializers.ModelSerializer):
     days_left = serializers.SerializerMethodField()
     created_at = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
+    due_date = serializers.DateTimeField(required=False, allow_null=True)
 
     class Meta:
         model = Task
