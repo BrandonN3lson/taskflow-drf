@@ -15,8 +15,8 @@ class CategoryList(generics.ListCreateAPIView):
                        DjangoFilterBackend, filters.SearchFilter,
                        filters.OrderingFilter
                        ]
-    search_fields = ['name', 'user__username']
-    ordering_fields = ['created_at']
+    search_fields = ['title', 'user__username']
+    ordering_fields = ['-created_at']
 
     def perform_create(self, serialiser):
         serialiser.save(user=self.request.user)
