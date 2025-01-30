@@ -13,4 +13,4 @@ class Category(models.Model):
         unique_together = ('user', 'title')
 
     def __str__(self):
-        return self.name
+        return self.title

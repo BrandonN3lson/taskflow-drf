@@ -16,7 +16,7 @@ class TaskList(generics.ListCreateAPIView):
                        DjangoFilterBackend, filters.SearchFilter,
                        filters.OrderingFilter
                        ]
-    search_fields = ['title', 'category__name']
+    search_fields = ['title', 'category__title']
     ordering_fields = ['created_at', 'priority']
 
     def perform_create(self, serializer):
