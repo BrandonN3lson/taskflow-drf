@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 import re
+from datetime import timedelta
 import dj_database_url
 if os.path.exists('env.py'):
     import env # noqa
@@ -41,6 +42,10 @@ if 'DEV' not in os.environ:
         'rest_framework.renderers.JSONRenderer',
     ]
 
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+}
 
 REST_USE_JWT = True
 JWT_AUTH_SECURE = True
