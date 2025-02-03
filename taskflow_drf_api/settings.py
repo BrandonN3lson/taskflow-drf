@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 import re
-from datetime import timedelta
 import dj_database_url
 if os.path.exists('env.py'):
     import env # noqa
@@ -47,7 +46,7 @@ REST_USE_JWT = True
 JWT_AUTH_SECURE = True
 JWT_AUTH_COOKIE = 'my-app-auth'
 JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
-JWT_AUTH_SAMESITE = 'None'
+JWT_AUTH_SAMESITE = 'Lax'
 
 REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'taskflow_drf_api.serializers.UserSerializer',
@@ -75,7 +74,8 @@ ALLOWED_HOSTS = [
 
 if 'CLIENT_ORIGIN' in os.environ:
     CORS_ALLOWED_ORIGINS = [
-        os.environ.get('CLIENT_ORIGIN')
+        os.environ.get('CLIENT_ORIGIN'),
+        'http://localhost:3000',
     ]
 
 if 'CLIENT_ORIGIN_DEV' in os.environ:
@@ -133,8 +133,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-
 
 ROOT_URLCONF = 'taskflow_drf_api.urls'
 
