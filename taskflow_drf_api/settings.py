@@ -46,7 +46,7 @@ REST_USE_JWT = True
 JWT_AUTH_SECURE = True
 JWT_AUTH_COOKIE = 'my-app-auth'
 JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
-JWT_AUTH_SAMESITE = 'Lax'
+JWT_AUTH_SAMESITE = 'None'
 
 REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'taskflow_drf_api.serializers.UserSerializer',
@@ -70,6 +70,7 @@ DEBUG = 'DEV' in os.environ
 ALLOWED_HOSTS = [
     '8000-brandonn3ls-taskflowdrf-9a17inewlr1.ws.codeinstitute-ide.net',
     os.environ.get('ALLOWED_HOST'),
+    '127.0.0.1',
 ]
 
 if 'CLIENT_ORIGIN' in os.environ:
@@ -89,6 +90,7 @@ CSRF_TRUSTED_ORIGINS = [
     'https://8000-brandonn3ls-taskflowdrf-9a17inewlr1.ws.codeinstitute-ide.net',
     'https://task-flow-drf-api-6a658d5dbfee.herokuapp.com',
     'https://3000-brandonn3lson-taskflow-drtekwb9ez2.ws.codeinstitute-ide.net',
+    'http://localhost:3000',
 ]
 
 
