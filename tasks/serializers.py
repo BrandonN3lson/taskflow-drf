@@ -1,11 +1,14 @@
 from django.contrib.humanize.templatetags.humanize import naturaltime
 from rest_framework import serializers
 from datetime import datetime
-from .models import Task
+from .models import Task, Category
 
 
 class TaskSerializer (serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='user.username')
+    category = serializers.PrimaryKeyRelatedField(
+        queryset=Category.objects.none()
+    )
     is_overdue = serializers.SerializerMethodField()
     days_left = serializers.SerializerMethodField()
     created_at = serializers.SerializerMethodField()
@@ -19,6 +22,15 @@ class TaskSerializer (serializers.ModelSerializer):
             'category', 'status', 'priority',
             'due_date', 'days_left', 'is_overdue', 'created_at', 'updated_at',
         ]
+
+    def __init__(self, *args, **kwargs):
+        # filter categories for the authenticated user
+        super().__init__(*args, **kwargs)
+        request = self.context.get('request')
+        if request:
+            self.fields['category'].queryset = Category.objects.filter(
+                user=request.user
+                )
 
     def get_created_at(self, obj):
         return naturaltime(obj.created_at)

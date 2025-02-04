@@ -18,9 +18,15 @@ class TaskFileList(generics.ListCreateAPIView):
     search_fields = ['task__title']
     ordering_fields = ['uploaded_at']
 
+    def get_queryset(self):
+        return TaskFile.objects.filter(task__user=self.request.user)
+
 
 class TaskFileDetail(generics.RetrieveDestroyAPIView):
 
     permission_classes = [IsAuthenticated]
     serializer_class = TaskFileSerializer
     queryset = TaskFile.objects.all()
+
+    def get_queryset(self):
+        return TaskFile.objects.filter(task__user=self.request.user)

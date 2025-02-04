@@ -18,6 +18,9 @@ class CategoryList(generics.ListCreateAPIView):
     search_fields = ['title', 'user__username']
     ordering_fields = ['-created_at']
 
+    def get_queryset(self):
+        return Category.objects.filter(user=self.request.user)
+
     def perform_create(self, serialiser):
         serialiser.save(user=self.request.user)
 
@@ -27,3 +30,6 @@ class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = CategorySerializer
     queryset = Category.objects.all()
+
+    def get_queryset(self):
+        return Category.objects.filter(user=self.request.user)

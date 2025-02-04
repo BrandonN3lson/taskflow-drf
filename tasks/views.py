@@ -19,6 +19,9 @@ class TaskList(generics.ListCreateAPIView):
     search_fields = ['title', 'category__title']
     ordering_fields = ['created_at', 'priority']
 
+    def get_queryset(self):
+        return Task.objects.filter(user=self.request.user)
+
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
@@ -28,6 +31,9 @@ class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = TaskSerializer
     queryset = Task.objects.all()
+
+    def get_queryset(self):
+        return Task.objects.filter(user=self.request.user)
 
 
 class TasksDueSoon(generics.ListAPIView):
@@ -45,6 +51,7 @@ class TasksDueSoon(generics.ListAPIView):
         ).filter(
             due_date__range=(start_of_week, end_of_week)
         ) | Task.objects.filter(
+            user=self.request.user,
             due_date__lt=today
         )
 
