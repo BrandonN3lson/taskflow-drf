@@ -4,7 +4,7 @@ from tasks.serializers import TaskTitleSerializer
 
 
 class TaskFileSerializer (serializers.ModelSerializer):
-    task_title = TaskTitleSerializer(source='task')
+    task_title = TaskTitleSerializer(source='task', read_only=True)
 
     class Meta:
         model = TaskFile
