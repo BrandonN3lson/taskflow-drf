@@ -7,7 +7,7 @@ class TaskFile (models.Model):
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
     file = models.FileField(upload_to='taskFlow/',
                             storage=MediaCloudinaryStorage(),
-                            blank=True)
+                            blank=False)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
