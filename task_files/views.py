@@ -7,7 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 """
 API views for managing TaskFile objects.
 
-These views allow authenticated users to list, create, retrieve, and delete 
+These views allow authenticated users to list, create, retrieve, and delete
 task-related files. Users can only access files associated with their own
 tasks.
 
