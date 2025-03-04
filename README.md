@@ -111,8 +111,11 @@ API Endpoints
     
 *   `DELETE /task-files/<id>/` – Delete a task file.
     
-Tests
------
+Tests and validation
+--------------------
+### CI python Linter
+- all python files were put throught the Linter and came back PEP8 compatible
+- [python validator image](./static/images/CI-python-linter-results.png)
 
 ### Manual Testing Table
 
@@ -144,7 +147,7 @@ Technologies Used
 *   **JWT Authentication** – Secure user authentication
 
 ### Tools
-- **GitPod**: For coding environment.    
+- **VsCode**: For coding environment.    
 - **Gunicorn**: For serving the application in production.  
 - **Django Allauth**: For user authentication and management.  
 - **Psycopg**: PostgreSQL database adapter for Django.  
