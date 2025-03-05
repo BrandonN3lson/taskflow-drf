@@ -72,6 +72,16 @@ Features
    
    *   `GET /tasks/due-soon/` – Retrieve tasks due this week or overdue.
     
+    #### Task Files
+
+   *   `GET /task-files/` – List all task files.
+       
+   *   `POST /task-files/` – Upload a task file.
+       
+   *   `GET /task-files/<id>/` – Retrieve a specific task file.
+       
+   *   `DELETE /task-files/<id>/` – Delete a task file.
+    
     
 
 Installation
@@ -100,16 +110,7 @@ Installation
 6. ### Run the server:
         python manage.py runserver
 
-### Task Files
 
-*   `GET /task-files/` – List all task files.
-    
-*   `POST /task-files/` – Upload a task file.
-    
-*   `GET /task-files/<id>/` – Retrieve a specific task file.
-    
-*   `DELETE /task-files/<id>/` – Delete a task file.
-    
 Tests and validation
 --------------------
 ### CI python Linter
