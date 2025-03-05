@@ -1,18 +1,19 @@
 TaskFlow DRF API
 ================
+![taskflow drf image](../taskflow-drf/static/images/taskflow-drf-image.png)
 
-TaskFlow is a Django Rest Framework (DRF) API that helps users manage tasks, categories, and task-related file uploads. This API provides authentication, task management, and file uploads using Cloudinary.
+This is a Django Rest Framework (DRF) API for TaskFlow that helps users manage tasks, categories, and task-related file uploads. This API provides authentication, task management, and file uploads using Cloudinary.
 
 [Click here](https://task-flow-drf-api-6a658d5dbfee.herokuapp.com/) to view deployed TaskFlow DRF API
 
 ## Contents
 - [Features](#features)
-- [Installation](#installation)
 - [API Endpoints](#api-endpoints)
   - [Authentication](#authentication)
   - [Categories](#categories)
   - [Tasks](#tasks)
   - [Task Files](#task-files)
+- [Installation](#installation)
 - [Manual Testing Table](#manual-testing-table)
 - [Technologies Used](#technologies-used)
 
@@ -30,6 +31,47 @@ Features
 *   Filter, search, and order tasks.
     
 *   Retrieve tasks due soon.
+
+* ### API Endpoints
+
+   #### Authentication
+
+   *   `POST /dj-rest-auth/login/` – Log in a user.
+   
+   *   `POST /dj-rest-auth/logout/` – Log out the user.
+   
+   *   `POST /dj-rest-auth/registration/` – Register a new user.
+   
+   *   `POST /dj-rest-auth/token/refresh/` – Refresh JWT token.
+    
+
+   #### Categories
+
+   *   `GET /categories/` – List all categories.
+   
+   *   `POST /categories/` – Create a new category.
+   
+   *   `GET /categories/<id>/` – Retrieve a specific category.
+   
+   *   `PATCH /categories/<id>/` – Update a category.
+   
+   *   `DELETE /categories/<id>/` – Delete a category.
+   
+   
+   #### Tasks
+   
+   *   `GET /tasks/` – List all tasks.
+   
+   *   `POST /tasks/` – Create a new task.
+   
+   *   `GET /tasks/<id>/` – Retrieve a specific task.
+   
+   *   `PATCH /tasks/<id>/` – Update a task.
+   
+   *   `DELETE /tasks/<id>/` – Delete a task.
+   
+   *   `GET /tasks/due-soon/` – Retrieve tasks due this week or overdue.
+    
     
 
 Installation
@@ -57,49 +99,6 @@ Installation
     
 6. ### Run the server:
         python manage.py runserver
-    
-
-API Endpoints
--------------
-
-### Authentication
-
-*   `POST /dj-rest-auth/login/` – Log in a user.
-    
-*   `POST /dj-rest-auth/logout/` – Log out the user.
-    
-*   `POST /dj-rest-auth/registration/` – Register a new user.
-    
-*   `POST /dj-rest-auth/token/refresh/` – Refresh JWT token.
-    
-
-### Categories
-
-*   `GET /categories/` – List all categories.
-    
-*   `POST /categories/` – Create a new category.
-    
-*   `GET /categories/<id>/` – Retrieve a specific category.
-    
-*   `PATCH /categories/<id>/` – Update a category.
-    
-*   `DELETE /categories/<id>/` – Delete a category.
-    
-
-### Tasks
-
-*   `GET /tasks/` – List all tasks.
-    
-*   `POST /tasks/` – Create a new task.
-    
-*   `GET /tasks/<id>/` – Retrieve a specific task.
-    
-*   `PATCH /tasks/<id>/` – Update a task.
-    
-*   `DELETE /tasks/<id>/` – Delete a task.
-    
-*   `GET /tasks/due-soon/` – Retrieve tasks due this week or overdue.
-    
 
 ### Task Files
 
@@ -140,17 +139,22 @@ Tests and validation
 Technologies Used
 -----------------
 
-*   **Django Rest Framework** – API development
-*   **PostgreSQL** – Database for deployed app
-*    **SqleLite** - Databse for Dev environment
-*   **Cloudinary** – Media storage
-*   **JWT Authentication** – Secure user authentication
+* **Django Rest Framework** – API development
+* **PostgreSQL** – Database for deployed app
+* **SqleLite** - Databse for Dev environment
+* **Cloudinary** – Media storage
+* **JWT Authentication** – Secure user authentication
+* **Django Allauth**: For user authentication and management.
+* **Gunicorn**: For serving the application in production.
+* **Psycopg**: PostgreSQL database adapter for Django.
 
 ### Tools
 - **VsCode**: For coding environment.    
-- **Gunicorn**: For serving the application in production.  
-- **Django Allauth**: For user authentication and management.  
-- **Psycopg**: PostgreSQL database adapter for Django.  
+- **Black**: for python formatting
+
+   ### Model Design
+   * **Lucidchart**
+      * My ERD for my model structure and relationship between user and models. [view here](../taskflow-drf/static/images/TaskFlow-model-diagram.png)
 
 References
 ----------
