@@ -4,7 +4,11 @@ TaskFlow DRF API
 
 This is a Django Rest Framework (DRF) API for TaskFlow that helps users manage tasks, categories, and task-related file uploads. This API provides authentication, task management, and file uploads using Cloudinary.
 
-[Click here](https://task-flow-drf-api-6a658d5dbfee.herokuapp.com/) to view deployed TaskFlow DRF API
+view deployed TaskFlow DRF API - [TaskFlow DRF API Live](https://task-flow-drf-api-6a658d5dbfee.herokuapp.com/)
+
+View Taskflow Frontend Live website - [TaskFlow Live website](https://taskflow-react-app-6836213131c6.herokuapp.com/)
+
+View Taskflow Frontend README - [TaskFlow README](https://github.com/BrandonN3lson/taskflow)
 
 ## Contents
 - [Features](#features)
