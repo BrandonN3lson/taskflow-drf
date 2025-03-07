@@ -1,6 +1,6 @@
 TaskFlow DRF API
 ================
-![taskflow drf image](../taskflow-drf/static/images/taskflow-drf-image.png)
+![taskflow drf image](/static/images/taskflow-drf-image.png)
 
 This is a Django Rest Framework (DRF) API for TaskFlow that helps users manage tasks, categories, and task-related file uploads. This API provides authentication, task management, and file uploads using Cloudinary.
 
